@@ -1,0 +1,48 @@
+<ion-view view-title="登录界面" xmlns:http="http://www.w3.org/1999/xhtml">
+	<ion-nav-buttons side="left">
+		<a class="button button-clear"  onclick="history.go(-1)">
+      	返回
+  </a>
+	</ion-nav-buttons>
+    <ion-content class="padding">
+        <p>请先登录哦，亲！</p>
+
+        <div class="list">
+            <form novalidate name="loginform" >
+            <label class="item item-input item-floating-label">
+                <span class="input-label">用户名</span>
+                <input type="text"  required ng-model="data.loginusername"   ng-minlength="1" ng-maxlength="10" name="username" placeholder="用户名">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">密码</span>
+                <input type="text" required ng-model="data.loginpassword" name="userpassword" ng-minlength="6" ng-maxlength="10" placeholder="密码" >
+            </label>
+            </form>
+            <span style="color:#4b8bf4" ng-if="voidname==1||(wrongcode==1) ">用户名或密码错误。</span>
+            <span style="color:#4b8bf4" ng-show="loginform.username.$dirty && loginform.username.$invalid">
+  <span ng-show="loginform.username.$error.required">请填写用户名。</span>
+  </span>
+            <span style="color:#4b8bf4" ng-show="loginform.username.$dirty && loginform.username.$invalid">
+  <span ng-show="loginform.username.$error.maxlength">用户名大于了10。</span>
+  </span>
+
+            <span style="color:#4b8bf4" ng-show="loginform.userpassword.$dirty && loginform.userpassword.$invalid">
+  <span ng-show="loginform.userpassword.$error.required">请填写密码。</span>
+  </span>
+            <span style="color:#4b8bf4" ng-show="loginform.userpassword.$dirty && loginform.userpassword.$invalid">
+  <span ng-show="loginform.userpassword.$error.maxlength">密码长度大于了20。</span>
+  </span>
+            <span style="color:#4b8bf4" ng-show="loginform.userpassword.$dirty && loginform.userpassword.$invalid">
+  <span ng-show="loginform.userpassword.$error.minlength">密码长度应大于等于6。</span>
+  </span>
+        </div>
+         <button class="button button-block button-positive" id="loginup"  ng-click="loginfun()" ng-if="loginform.username.$valid&&loginform.userpassword.$valid">
+ 登录
+	</button>
+        <button class="button button-block button-stable" ng-disabled ng-if="!(loginform.username.$valid&&loginform.userpassword.$valid)">
+            登录
+        </button>
+	<a style="float: right;" href="#/enroll">注册</a>
+    </ion-content>
+   
+</ion-view>

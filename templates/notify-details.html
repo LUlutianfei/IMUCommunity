@@ -1,0 +1,38 @@
+<ion-view view-title="通知详情" xmlns:http="http://www.w3.org/1999/xhtml">
+	<ion-nav-buttons side="left">
+		<a class="button button-clear" onclick="history.go(-1)">
+      返回
+   </a>
+	</ion-nav-buttons>
+	<ion-content class="padding">
+		<div class="list card">
+
+			<div class="item item-avatar">
+				<img src="ng-src={{"http://119.28.16.18/avatar/"+item.avatar}} ">
+				<h2>莫同学</h2>
+				<p>{{item.time}}</p>
+			</div>
+
+			<div class="item item-body">
+				<p>
+					{{item.content}}
+				</p>
+				<p>
+					<a href="#" class="subdued">{{item.like_num}} Like</a>
+				</p>
+			</div>
+
+		</div>
+		<ion-list class=" card">
+			<ion-item ng-repeat="comment in item.comments track by $index">
+				<div class="list">
+					<a class="item item-avatar" href="#">
+						<img src="venkman.jpg">
+						<h2>爱同学</h2>
+						<p>{{comment}}</p>
+					</a>
+				</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

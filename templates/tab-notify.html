@@ -1,0 +1,23 @@
+<ion-view view-title="">
+  <ion-nav-buttons side="right">
+    <a class="button button-clear" ng-if="!login" href="#/login">
+      登录
+    </a>
+    <a class="button button-clear" ng-if="login" href="#/person">
+      我
+    </a>
+  </ion-nav-buttons>
+
+  <ion-content>
+    <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-list>
+      <ion-item class="item-avatar" ng-repeat="item in notifyList" href="#/notifyDetail/{{item.nid}}">
+        <img ng-src={{"http://119.28.16.18/avatar/"+item.avatar}} />
+        <h2>{{item.oid}}</h2>
+        <p style="float: right">{{item.time}}</p>
+        <p>{{item.content}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

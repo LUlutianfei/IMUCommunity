@@ -1,0 +1,19 @@
+
+<ion-view view-title="发表" xmlns:http="http://www.w3.org/1999/xhtml">
+	<ion-nav-buttons side="left">
+		<a class="button button-clear" onclick="history.go(-1)">
+			返回
+		</a>
+	</ion-nav-buttons>
+	<ion-content class="padding">
+		<div class="list">
+			<div class="boxShadow item item-input-inset ">	
+      				<textarea style="width: 100%; resize: none;"  rows="10" ng-model="data.fabiaozixun" placeholder="写下你想知道的事……"></textarea>
+    		</div>	
+				<button style="float: right;" ng-click="fabiaozixun()" class="button button-positive">
+      				发表咨询
+    			</button>
+			
+		</div>
+	</ion-content>
+</ion-view>

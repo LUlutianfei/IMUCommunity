@@ -1,0 +1,48 @@
+<ion-view view-title="">
+	<ion-nav-buttons side="right">
+		<a class="button button-clear" ng-if="!login" href="#/login">
+			登录
+		</a>
+		<a class="button button-clear" ng-if="login" href="#/person">
+			我
+		</a>
+	</ion-nav-buttons>
+		<ion-nav-buttons side="left">
+		<a class="button button-clear" ng-if="!login" href="#/loginfabiao">
+      发表
+    </a>
+			<a class="button button-clear" ng-if="login" href="#/publish-tucao">
+				发表
+			</a>
+	</ion-nav-buttons>
+	<ion-content>
+		<ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
+		</ion-refresher>
+		{{login}}
+		{{token}}
+		<ion-list>
+			<ion-item style=" padding: 0 ;  border-bottom: 7px solid #e8e8e8;" class="item item-body" ng-repeat="item in tucaoList" href="#/tucaoDetail/{{item.id}}">
+				<img ng-if="item.gender==0" style="height: 60px;width: 60px; border-radius: 100%;" src="templates/images/weizhipic.jpg" />
+				<img ng-if="item.gender==1" style="height: 60px;width: 60px; border-radius: 100%;" src="templates/images/malepic.jpg" />
+				<img ng-if="item.gender==2" style="height: 60px;width: 60px; border-radius: 100%;" src="templates/images/femalepic.jpg" />
+				<span style="font-size:18px; position: relative; left: 20px; top: -20px;" >某同学 ·</span>
+				<span style="font-size:18px; position: relative; left: 20px; top: -20px;"ng-if="item.gender==0">未知</span>
+				<span style="font-size:18px; position: relative; left: 20px; top: -20px;" ng-if="item.gender==1">男</span>
+				<span style="font-size:18px; position: relative; left: 20px; top: -20px;" ng-if="item.gender==2">女</span>
+				<span style="float: right">{{item.time}}</span>
+				<p style=" text-align: justify; font-size:16px;height: auto; max-height: 60px; overflow: hidden;text-overflow: ellipsis;">{{item.content}}</p>
+				<p style="padding-top:4px;font-size:18px; border-top: 1px solid #C0C0C0;" align="right" class="pull-right">
+					<a href="#" class="subdued"><i  style="font-size:22px; color:red;  margin: 0 10px;" class = "ion-android-favorite-outline" ng-if="item.liked"></i>
+						<i style=" margin: 0 10px;font-size:22px;" ng-click="xihuan(item.id,$index)" class = "ion-android-favorite-outline" ng-if="!(item.liked)"></i><span >{{item.like_num}}</span></a>
+					<a href="#" class="subdued">
+						<i style=" margin: 0 10px;font-size:22px;" class = "ion-chatbubble-working" ></i>{{item.comment_num}}
+					</a>
+				</p>
+			</ion-item>
+		</ion-list>
+
+
+		<ion-infinite-scroll ng-if="moreDataCanBeLoaded" on-infinite="loadMore()" icon="ion-loading-c" distance="1%">
+		</ion-infinite-scroll>
+	</ion-content>
+</ion-view>

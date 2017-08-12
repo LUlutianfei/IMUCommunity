@@ -1,0 +1,49 @@
+<ion-view view-title="吐槽详情" xmlns:http="http://www.w3.org/1999/xhtml" xmlns:color="http://www.w3.org/1999/xhtml">
+	<ion-nav-buttons side="left">
+		<a class="button button-clear" onclick="history.go(-1)">
+      返回
+   </a>
+	</ion-nav-buttons>
+	<ion-content style="margin: 0;" class="padding">
+		<div  class="list ">
+			<div class="item item-avatar">
+				<img ng-if="item.gender==0" style="height: 60px;width: 60px; border-radius: 100%;" src="templates/images/weizhipic.jpg" />
+				<img ng-if="item.gender==1" style="height: 60px;width: 60px; border-radius: 100%;" src="templates/images/malepic.jpg" />
+				<img ng-if="item.gender==2" style="height: 60px;width: 60px; border-radius: 100%;" src="templates/images/femalepic.jpg" />
+				<h2 style="font-size: 20px;;" >某同学 ·{{item.gnder}}</h2>
+				<p>{{item.time}}</p>
+			</div>
+
+			<div class="item item-body">
+				<p style="font-size: 16px; text-align: justify; margin: 0 ; padding: 10px 0; " >
+					{{item.content}}
+				</p>
+				<p style="margin-top: 0; float: right;" >
+					<a  class="subdued">
+                        <i style="font-size:22px; color:#EF473A;  margin: 0 10px;" class = "ion-android-favorite-outline" ng-if="item.liked&&login"></i>
+                        <a style=" margin: 0 10px; color: #9e9e9e;  font-size:22px;"   class = "ion-android-favorite-outline" ng-if="!login" href="#/loginfabiao"></a>
+                        <i style=" margin: 0 10px;  font-size:22px;" ng-click="xihuana()" class = "ion-android-favorite-outline" ng-if="!(item.liked)&&login"></i>
+                        {{item.like_num}}
+					</a>
+				</p>
+			</div>
+			
+		</div>
+		<ion-list>
+			<ion-item  style=" border: 0px; border-bottom: 1px solid #e8e8e8;" ng-repeat="comment in item.comments track by $index">
+				<div class="list">
+						<img style="width: 40px; height: 40px; border-radius: 100%;" src="templates/images/wumi.jpg" />
+						<span style="font-size:16px; position: relative; left: 20px; top: -20px;" >某同学</span>
+						<p style="font-size: 14px; text-align: justify; " >{{comment}}</p>
+
+				</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+	<div class="bar bar-footer bar-positive">
+		<input style="width: 100%;"  ng-model="data.publishtucaocomment" type="text" placeholder="你想对他/她/它的话说些什么" />
+		<button class="button"  ng-if="login"id="publishtucaocommentbutton" ng-click="comment()">发表评论啊</button>
+		<button class="button" ng-if="!login" onclick='window.location.href="#/loginfabiao"' >请先登录啊</button>
+
+	</div>
+</ion-view>

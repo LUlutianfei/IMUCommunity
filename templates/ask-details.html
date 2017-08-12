@@ -1,0 +1,38 @@
+<ion-view view-title="咨询详情" xmlns:http="http://www.w3.org/1999/xhtml">
+	<ion-nav-buttons side="left">
+		<a class="button button-clear" onclick="history.go(-1)">
+      返回
+   </a>
+	</ion-nav-buttons>
+	<ion-content class="padding">
+		<div style="margin-bottom: 30px;" class="list card">
+			<div class="item item-avatar">
+				<img  ng-src={{"http://119.28.16.18/avatar/"+question.avatar}}  />
+				<span style="font-size: 18px;">{{question.name}}</span>
+				<span style="font-size: 14px; float: right; font-size: 16px;">{{question.time}}</span>
+			</div>
+
+			<div class="item item-body">
+				<p style="margin-top: 0; font-size: 16px;">
+					{{question.detail}}
+				</p>
+			</div>
+
+		</div>
+		<ion-list class=" item-body">
+			<ion-item style="border: 0px; border-bottom: 1px solid #e8e8e8;" ng-repeat="comment in item track by $index">
+				<div class="list">
+						<img style="width: 40px; height: 40px; border-radius: 10px;" ng-src={{"http://119.28.16.18/avatar/"+comment.avatar}} />
+						<span style="font-size:16px; position: relative; left: 20px; top: -20px;" >{{comment.name}}同学</span>
+						<span style="font-size:12px; float: right;">{{comment.time}}</span>
+						<p style="font-size: 14px; text-align: justify; " >{{comment.content}}</p>
+
+				</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+	<div class="bar bar-footer bar-positive">
+		<input style="width: 100%;" type="text" ng-model="data.inputanswer" placeholder="你想对他/她/它的话说些什么" />
+		<button class="button" id="answerquestionbutton" ng-click="answer()">回答问题啊<tton>
+	</div>
+</ion-view>
